@@ -40,7 +40,7 @@ function Login() {
          
       })
     
-  }, [])
+  }, [members])
 
    function signIn(){
     
@@ -59,14 +59,14 @@ function Login() {
          }))
          if(check === false){
      
-          db.collection("Users").add({
-            name:user.displayName,
-            email:user.email,
-            phone:user.phoneNumber,
-            img:user.photoURL,
-            id:user.uid,
-      
-        })
+            db.collection("Users").add({
+              name:user.displayName,
+              email:user.email,
+              phone:user.phoneNumber,
+              img:user.photoURL,
+              id:user.uid,
+        
+          })
         }
         else{
           console.log(check)

@@ -14,7 +14,7 @@ function Home() {
             setMembers(snap.docs.map((doc)=>({id:doc.id,data:doc.data()})))
            
         })
-    }, [])
+    }, [members])
 
     useEffect(()=>{
         auth.onAuthStateChanged(user =>{
