@@ -67,13 +67,7 @@ function Login() {
         } 
         
       })
-      
-     
-     
-     
-    
-    
-    .catch(error => alert(error.message))
+    .catch(error => console.log(error.message))
   }
   return (
     <div className="d-flex base justify-content-center align-items-center flex-column" style={{backgroundColor:'#2F4F4F',height:'100vh'}} onClick={signIn} >
