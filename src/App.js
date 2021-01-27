@@ -34,12 +34,12 @@ function Login() {
   const [members, setMembers] = useState([])
   const [check, setCheck] = useState(0)
   useEffect(() => {
-    if(check === 0){
+    
       db.collection('Users').onSnapshot(snap=>{
           setMembers(snap.docs.map((doc)=>({id:doc.id,data:doc.data()})))
          
       })
-    }
+    
   }, [])
 
    function signIn(){
