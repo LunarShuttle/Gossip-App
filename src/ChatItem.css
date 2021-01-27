@@ -1,0 +1,10 @@
+.chat__form__div{
+display: inline-block;
+color:white;
+overflow-wrap:break-word;
+white-space:wrap;
+word-break:break-all;
+max-width:100%;
+background:#2F4F4F;
+box-shadow: 4px 4px 12px -9px rgba(255, 255, 255, 0.25), -5px -5px 18px -8px rgba(0, 0, 0, 0.25);   
+}

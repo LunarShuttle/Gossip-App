@@ -1,10 +1,19 @@
 .App {
   text-align: center;
+  
 }
-
+.signIn-btn:hover{
+  cursor: pointer;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+::-webkit-scrollbar {
+  width: 0px;
+}
+.base{
+  width: 100vw;
 }
 
 @media (prefers-reduced-motion: no-preference) {
