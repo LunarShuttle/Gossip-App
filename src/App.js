@@ -32,7 +32,7 @@ function App() {
 
 function Login() {
   const [members, setMembers] = useState([])
-  const [check, setCheck] = useState(0)
+  const [check, setCheck] = useState(true)
   useEffect(() => {
     
       db.collection('Users').onSnapshot(snap=>{
@@ -45,19 +45,19 @@ function Login() {
    function signIn(){
     
 
-    setCheck(check+1)
+   
  
     auth.signInWithPopup(provider)
     .then(({user}) => {
      
       
       /*Finding out whether a user already exists*/
-       let status = members.some((ex) =>{
+       setCheck( members.some((ex) =>{
          return (
-           ex.data.email === user.email
+           ex.data.id === user.uid
            )
-         })
-         if(status === false){
+         }))
+         if(check === false){
      
           db.collection("Users").add({
             name:user.displayName,
@@ -69,7 +69,7 @@ function Login() {
         })
         }
         else{
-          console.log(status)
+          console.log(check)
         } 
         
       })
