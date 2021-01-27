@@ -41,7 +41,7 @@ function Login() {
   }, [])
 
   function signIn(){
-    auth.signInWithRedirect(provider)
+    auth.signInWithPopup(provider)
     .then(({user}) => {
      
       
