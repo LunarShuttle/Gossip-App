@@ -19,7 +19,7 @@ function Home() {
     useEffect(()=>{
         auth.onAuthStateChanged(user =>{
           if(user){
-             console.log('hi')
+             
           }
           else{
             window.location.reload()
