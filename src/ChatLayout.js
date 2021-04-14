@@ -7,6 +7,7 @@ import './ChatLayout.css'
 import { Link } from 'react-router-dom'
 
 
+
 function ChatLayout(props) {
     const context = useContext(User)
     const [member, setMember] = useState([])
@@ -34,6 +35,7 @@ function ChatLayout(props) {
         db.collection('Messages').orderBy("timestamp","asc").onSnapshot(snap=>{
             setMessages(snap.docs.map((doc)=>({id:doc.id,data:doc.data()})))
         })
+        window.scrollTo(0, 1000)
     }, [messages])
         
     useEffect(()=>{
@@ -46,7 +48,8 @@ function ChatLayout(props) {
           }
         })
       },[])
-
+     
+      
     function sendM(){
         db.collection("Messages").add({
             timestamp:firebase.firestore.FieldValue.serverTimestamp(),
@@ -54,6 +57,7 @@ function ChatLayout(props) {
             sender:context.uid,
             receiver:client.id
         })
+        setInput('')
     }
 
      return (
@@ -76,7 +80,8 @@ function ChatLayout(props) {
                 </div>
             </div>
         </div>
-        <div className="pt-2" style={{height:'75%',overflowY:'auto'}}>
+       
+        <div id="chat-area"  className="pt-2" style={{height:'75%',overflowY:'auto'}}>
           {
               messages.map((message)=>{
      
@@ -90,10 +95,11 @@ function ChatLayout(props) {
                 }
               })
           }
+          
         
         </div>
         <div  className="d-flex justify-content-center align-items-center mt-4" style={{height:'10%'}}>
-            <input placeholder="type your chat" onChange={(e)=>setInput(e.target.value)}  className="px-2  text-left d-flex align-items-center" style={{backgroundColor:'black',height:'60%',width:'70%',borderRadius:'50px',color:'white',border:'0px solid transparent'}}>
+            <input placeholder="type your chat" onChange={(e)=>setInput(e.target.value)} value={inputer}  className="px-4  text-left d-flex align-items-center" style={{backgroundColor:'black',height:'60%',width:'70%',borderRadius:'50px',color:'white',border:'0px solid transparent'}}>
 
             </input>
             <div className="mx-2 add__chat d-flex align-items-center justify-content-center" onClick={()=>{sendM()}} style={{borderRadius:'50px',backgroundColor:'black',color:'white',height:'2.3rem',width:'2.3rem'}}>

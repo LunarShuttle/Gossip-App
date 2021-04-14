@@ -24,3 +24,6 @@
     color:white;
     border:0px solid transparent;
 }
+input:focus{
+    outline: none;
+}

@@ -31,48 +31,21 @@ function App() {
 
 
 function Login() {
-  const [members, setMembers] = useState([])
-  const [check, setCheck] = useState(true)
-  useEffect(() => {
-    
-      db.collection('Users').onSnapshot(snap=>{
-          setMembers(snap.docs.map((doc)=>({id:doc.id,data:doc.data()})))
-         
-      })
-    
-  }, [members])
-
    function signIn(){
-    
-
-   
- 
     auth.signInWithPopup(provider)
-    .then(({user}) => {
-     
-      
-      /*Finding out whether a user already exists*/
-       setCheck( members.some((ex) =>{
-         return (
-           ex.data.id === user.uid
-           )
-         }))
-         if(check === false){
-     
-            db.collection("Users").add({
-              name:user.displayName,
-              email:user.email,
-              phone:user.phoneNumber,
-              img:user.photoURL,
-              id:user.uid,
-        
-          })
-        }
-        else{
-          console.log(check)
-        } 
-        
+    .then((user)=>{
+      if(user.additionalUserInfo.isNewUser === true){
+        db.collection("Users").add({
+          name:user.user.displayName,
+          email:user.user.email,
+          phone:user.user.phoneNumber,
+          img:user.user.photoURL,
+          id:user.user.uid,
       })
+      }
+      
+  
+    })
     .catch(error => alert(error.message))
   }
   return (
