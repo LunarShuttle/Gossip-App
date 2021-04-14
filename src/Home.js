@@ -35,12 +35,12 @@ function Home() {
             <div className="pt-2" style={{height:'70%',overflowY:'auto'}}>
                 {
                     members.map((member)=>{
-                        if(context.email !== member.data.email){
-                            return(
-                                <Member key={member.id} img={member.data.img} name={member.data.name} id={member.data.id} />
-                            )
-                        }
-        
+                        return(
+                            context.email !== member.data.email ?
+                             <Member key={member.id} img={member.data.img} name={member.data.name} id={member.data.id} />
+                             :
+                             <></>
+                        )
                     })
                 }
             </div>

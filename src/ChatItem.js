@@ -15,7 +15,7 @@ function ChatItem(props) {
         else{
             setClient('d-none')
         }
-    }, [])
+    }, [props.sender,context.uid,props.receiver,props.client.id])
     return (
         <div className={props.sender === context.uid ? 'd-flex justify-content-end mr-5' : 'd-flex justify-content-start ml-5'}>
         <div  style={{

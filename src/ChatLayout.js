@@ -23,13 +23,13 @@ function ChatLayout(props) {
             ))
             
         })
-        member.map((mem)=>{
+        member.forEach((mem)=>{
             if(mem.data.id === props.match.params.id){
                  setClient(mem.data)
                 
             }
         })
-    }, [client,member])
+    }, [client,member,props.match.params.id])
     
     useEffect(() => {
         db.collection('Messages').orderBy("timestamp","asc").onSnapshot(snap=>{
@@ -84,15 +84,13 @@ function ChatLayout(props) {
         <div id="chat-area"  className="pt-2" style={{height:'75%',overflowY:'auto'}}>
           {
               messages.map((message)=>{
-     
-                if((message.data.sender === context.uid) || (message.data.receiver === context.uid) ){
-                    return(
-                        <>
-                        <ChatItem key={message.id} content={message.data.content} sender={message.data.sender} receiver={message.data.receiver} client={client} />
-                    <br/>
-                    </>
-                        )
-                }
+                return(
+                    message.data.sender === context.uid || message.data.receiver === context.uid ?
+                    <ChatItem key={message.id} content={message.data.content} sender={message.data.sender} receiver={message.data.receiver} client={client} />
+                      :
+                    <></>  
+ 
+                )
               })
           }
           
