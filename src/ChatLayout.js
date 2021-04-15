@@ -61,26 +61,34 @@ function ChatLayout(props) {
     }
 
      return (
-        <div className="container base p-0 d-flex flex-column chat__layout__base">
-          
+        <div className="container base p-0 d-flex flex-column chat__layout__base">    
+
+        {/* 👇👇 Header section : Name and Image of the Receipent show up here along with back button */ }
+
          <div className="d-flex align-items-center justify-content-center py-3 layout__placement" >
             <div className="row m-0 p-0 align-items-center">
+                
                 <div className="col-2 m-0 p-0">
                     <img src={client.img} className="img-fluid " width="30" style={{borderRadius:'50%'}} alt="client-logo"/>
                 </div>
+
                 <div className="col-8 m-0 p-0  text-center">
                     <h3 className="m-0 p-0" style={{color:'white'}}>{client.name}</h3>
 
                 </div>
+
                 <div className="col-2 m-0 p-0 ">
-               <Link to="/"> <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="white" className="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
-  <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z"/>
-</svg>
-</Link>
+                        <Link to="/">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="white" className="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
+                                <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z"/>
+                            </svg>
+                        </Link>
                 </div>
             </div>
         </div>
-       
+        
+        {/* 👇👇 Chat section : All the chats show up here */ }
+
         <div id="chat-area"  className="pt-2" style={{height:'75%',overflowY:'auto'}}>
           {
               messages.map((message)=>{
@@ -93,20 +101,19 @@ function ChatLayout(props) {
                 )
               })
           }
-          
-        
         </div>
-        <div  className="d-flex justify-content-center align-items-center mt-4" style={{height:'10%'}}>
-            <input placeholder="type your chat" onChange={(e)=>setInput(e.target.value)} value={inputer}  className="px-4  text-left d-flex align-items-center" style={{backgroundColor:'black',height:'60%',width:'70%',borderRadius:'50px',color:'white',border:'0px solid transparent'}}>
 
-            </input>
+        {/* 👇👇 Chat Sending section : The input field where we type and send chat  */ }
+
+        <div  className="d-flex justify-content-center align-items-center mt-4" style={{height:'10%'}}>
+            <input placeholder="type your chat" onChange={(e)=>setInput(e.target.value)} value={inputer}  className="px-4  text-left d-flex align-items-center" style={{backgroundColor:'black',height:'60%',width:'70%',borderRadius:'50px',color:'white',border:'0px solid transparent'}} />
             <div className="mx-2 add__chat d-flex align-items-center justify-content-center" onClick={()=>{sendM()}} style={{borderRadius:'50px',backgroundColor:'black',color:'white',height:'2.3rem',width:'2.3rem'}}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="white" className="bi bi-arrow-right-short" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
                 </svg>
-            </div>
-            
+            </div> 
         </div>
+
         </div>
     )
 }
