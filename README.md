@@ -46,4 +46,4 @@ Huge thanks to the following people for contributing to Gossip! ([emoji key](htt
 
 
 # 📄License
-Gossip is open-source and is under the  [MIT License](https://github.com/LunarShuttle/Gossip/blob/main/LICENSE).
+Gossip is open-source and is under the  [MIT License](https://github.com/LunarShuttle/Gossip-App/blob/main/LICENSE).
